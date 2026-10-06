@@ -1,0 +1,232 @@
+/* ===================================================
+   JUBILANT STEELS — UNIVERSAL BUTTON STYLES
+   Clean Outlined Neutral Base + Left-to-Right Red Wave Fill
+   =================================================== */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 6px; /* Moderate curvature: modern + industrial, not a pill */
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  box-sizing: border-box;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  transition: border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===================================================
+   SIZING & PROPORTIONS (Compact, Balanced, Precise)
+   =================================================== */
+
+.btn-sm {
+  height: 40px;
+  padding: 0 18px;
+  font-size: 0.8rem;
+  gap: 7px;
+}
+
+.btn-md {
+  height: 44px;
+  padding: 0 22px;
+  font-size: 0.84rem;
+  gap: 8px;
+}
+
+.btn-lg {
+  height: 48px;
+  padding: 0 26px;
+  font-size: 0.88rem;
+  gap: 8px;
+}
+
+/* ===================================================
+   INTERNAL CONTENT ALIGNMENT
+   =================================================== */
+
+.btn-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Base content layer: Visible in default neutral/outlined state */
+.btn-content-base {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover content layer: High-contrast white, clipped to match the wave fill */
+.btn-content-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  color: #FFFFFF !important;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  transition: clip-path 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover .btn-content-hover {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.btn-text {
+  display: inline-block;
+  line-height: 1;
+}
+
+.btn-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-icon {
+  display: block;
+}
+
+/* Micro-interaction on hover: subtle 3px icon forward push */
+.btn:hover .btn-icon-wrap {
+  transform: translateX(3px);
+}
+
+/* ===================================================
+   LEFT-TO-RIGHT ORGANIC RED WAVE FILL ANIMATION
+   Sweeps smoothly across in 0.4 seconds with curved leading edge
+   =================================================== */
+
+.btn-fill-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 135%;
+  height: 100%;
+  background-color: var(--color-red, #D3122A);
+  transform: translateX(-100%);
+  border-radius: 0 45% 45% 0 / 0 100% 100% 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Leading organic wave crest shimmer */
+.btn-fill-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 60%,
+    rgba(255, 255, 255, 0.35) 88%,
+    transparent 100%
+  );
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.btn:hover .btn-fill-bg {
+  transform: translateX(0);
+}
+
+/* ===================================================
+   BUTTON VARIANTS
+   =================================================== */
+
+/* 1. PRIMARY BUTTON: White neutral base with brand red border */
+.btn-primary {
+  background-color: #FFFFFF;
+  color: var(--color-red, #D3122A);
+  border: 1.5px solid var(--color-red, #D3122A);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.btn-primary .btn-fill-bg {
+  background-color: var(--color-red, #D3122A);
+}
+
+.btn-primary:hover {
+  border-color: var(--color-red, #D3122A);
+  box-shadow: 0 6px 20px rgba(211, 18, 42, 0.22);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 2. SECONDARY BUTTON: Neutral Outlined Glass */
+.btn-secondary {
+  background-color: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary .btn-fill-bg {
+  background-color: var(--color-red, #D3122A);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-red, #D3122A);
+  box-shadow: 0 6px 20px rgba(211, 18, 42, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* 3. NAV QUOTE BUTTON (Navbar "Get Code" / "Get a Quote") */
+.btn-nav-quote {
+  background-color: #FFFFFF;
+  color: var(--color-red, #D3122A);
+  border: 1.5px solid var(--color-red, #D3122A);
+  height: 40px;
+  padding: 0 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+.btn-nav-quote .btn-fill-bg {
+  background-color: var(--color-red, #D3122A);
+}
+
+.btn-nav-quote:hover {
+  border-color: var(--color-red, #D3122A);
+  box-shadow: 0 4px 14px rgba(211, 18, 42, 0.22);
+  transform: translateY(-1px);
+}
+
+.btn-nav-quote:active {
+  transform: translateY(0);
+}

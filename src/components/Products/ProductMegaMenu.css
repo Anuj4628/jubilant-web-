@@ -1,0 +1,276 @@
+/* ===================================================
+   JUBILANT STEELS — RED INDUSTRIAL PRODUCTS NAVIGATION PANEL
+   Structured rectangular layout with brand red foundation
+   =================================================== */
+
+.product-megamenu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, -5px, 0);
+  width: 840px;
+  max-width: min(840px, calc(100vw - 32px));
+  background-color: var(--color-red, #D3122A);
+  border: 1px solid #B80E23;
+  border-radius: 4px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3),
+              0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: 8px;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Invisible Safe Hover Bridge: Prevents menu from closing when moving cursor from nav link */
+.product-megamenu-panel::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
+/* Open State */
+.products-item:hover .product-megamenu-panel,
+.product-megamenu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+/* ===================================================
+   1. TOP HEADER BAR
+   =================================================== */
+
+.megamenu-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 22px;
+  background-color: rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.megamenu-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.megamenu-header-dash {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+}
+
+.megamenu-header-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.megamenu-header-tag {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ===================================================
+   2. TWO-COLUMN INDUSTRIAL GRID
+   =================================================== */
+
+.megamenu-columns-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  padding: 14px 18px 12px;
+  background-color: var(--color-red, #D3122A);
+  gap: 14px;
+}
+
+.megamenu-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.megamenu-col-separator {
+  background-color: rgba(255, 255, 255, 0.15);
+  width: 1px;
+  height: 100%;
+}
+
+.col-header-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  padding: 2px 8px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.col-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.col-sub {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.71rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+}
+
+/* Rows List */
+.megamenu-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.megamenu-row-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #FFFFFF;
+  transition: background-color 0.16s ease,
+              transform 0.16s ease;
+  cursor: pointer;
+}
+
+.megamenu-row-item:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(4px);
+}
+
+.row-thumb-wrap {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.row-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.row-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.row-name {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: #FFFFFF;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.row-desc {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.71rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.megamenu-row-item:hover .row-name {
+  color: #FFFFFF;
+}
+
+.row-arrow {
+  font-size: 0.95rem;
+  color: #FFFFFF;
+  opacity: 0.6;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+
+.megamenu-row-item:hover .row-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* ===================================================
+   3. FOOTER ACTION STRIP
+   =================================================== */
+
+.megamenu-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 22px;
+  background-color: rgba(0, 0, 0, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.megamenu-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.megamenu-footer-link:hover {
+  background-color: #FFFFFF;
+  color: var(--color-red, #D3122A);
+  border-color: #FFFFFF;
+}
+
+.footer-arrow-icon {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.megamenu-footer-link:hover .footer-arrow-icon {
+  transform: translateX(3px);
+}

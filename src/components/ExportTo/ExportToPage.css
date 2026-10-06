@@ -1,0 +1,486 @@
+/* ===================================================
+   JUBILANT STEELS — "EXPORT TO" / GLOBAL REACH PAGE
+   Global • Premium • Clean • Industrial • Lightweight
+   Strictly Visual Flag Presentation (No Country Text inside cards)
+   =================================================== */
+
+.export-page-container {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  color: #0E2A3A;
+  padding: 88px 0 84px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.export-page-main .export-page-container {
+  min-height: calc(100vh - 80px);
+  padding: 110px 0 90px;
+}
+
+/* Subtle Technical Geographic & Latitude Grid Background */
+.export-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(14, 42, 58, 0.04) 1.2px, transparent 1.2px),
+    linear-gradient(to right, rgba(14, 42, 58, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 42, 58, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 120px 120px, 120px 120px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.export-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===================================================
+   1. HERO / HEADER AREA
+   =================================================== */
+
+.export-hero-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 48px;
+}
+
+.export-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.export-eyebrow-dash {
+  color: #D94A1F;
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.export-eyebrow-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #D94A1F;
+}
+
+.export-main-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(2.15rem, 3.4vw, 3.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0E2A3A;
+  margin: 0 0 16px 0;
+}
+
+.export-main-description {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.96rem, 1.12vw, 1.08rem);
+  line-height: 1.65;
+  color: #475569;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+/* ===================================================
+   2. CONTROLS PANEL: SEARCH + REGIONS + STATUS
+   =================================================== */
+
+.export-controls-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 46px;
+}
+
+/* Minimal Search Box */
+.export-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.export-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.export-search-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 42px 0 46px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.94rem;
+  color: #0E2A3A;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.export-search-input::placeholder {
+  color: #94A3B8;
+}
+
+.export-search-input:focus {
+  border-color: #D94A1F;
+  box-shadow: 0 0 0 3px rgba(217, 74, 31, 0.12),
+              0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.export-search-clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.export-search-clear-btn:hover {
+  color: #0E2A3A;
+}
+
+/* Region Filter Buttons Bar */
+.export-regions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 960px;
+}
+
+.export-region-btn {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.export-region-btn:hover {
+  border-color: #CBD5E1;
+  color: #0E2A3A;
+  background-color: #F8FAFC;
+}
+
+.export-region-btn.active {
+  background-color: #D94A1F;
+  border-color: #D94A1F;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(217, 74, 31, 0.22);
+}
+
+.export-region-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(217, 74, 31, 0.25);
+}
+
+/* Dynamic Status Bar */
+.export-status-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+.export-count-badge strong {
+  color: #0E2A3A;
+  font-weight: 700;
+}
+
+.export-reset-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: #D94A1F;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.export-reset-link:hover {
+  color: #B93812;
+}
+
+/* ===================================================
+   3. PURE COUNTRY FLAG GRID (STRICTLY NO TEXT INSIDE CARDS)
+   =================================================== */
+
+.export-flags-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+/* Individual Flag Card */
+.export-flag-card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 24px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  cursor: default;
+  outline: none;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+  user-select: none;
+}
+
+.export-flag-card:hover,
+.export-flag-card:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  border-color: #D94A1F;
+  box-shadow: 0 10px 24px rgba(217, 74, 31, 0.11),
+              0 3px 8px rgba(15, 23, 42, 0.05);
+}
+
+/* Centered Flag Frame */
+.export-flag-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 42px;
+}
+
+.export-flag-img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12),
+              0 0 0 1px rgba(15, 23, 42, 0.06); /* Thin perimeter edge so light flags remain crisp */
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.export-flag-card:hover .export-flag-img,
+.export-flag-card:focus-visible .export-flag-img {
+  transform: scale(1.05);
+}
+
+/* ===================================================
+   4. EMPTY STATE
+   =================================================== */
+
+.export-empty-state {
+  text-align: center;
+  padding: 64px 20px;
+  background-color: #FFFFFF;
+  border: 1px dashed #CBD5E1;
+  border-radius: 10px;
+  max-width: 520px;
+  margin: 20px auto 0;
+}
+
+.export-empty-icon {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-empty-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0E2A3A;
+  margin: 0 0 8px 0;
+}
+
+.export-empty-text {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.92rem;
+  color: #64748B;
+  margin: 0 0 20px 0;
+}
+
+.export-empty-reset-btn {
+  background-color: #0E2A3A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.export-empty-reset-btn:hover {
+  background-color: #D94A1F;
+  transform: translateY(-1px);
+}
+
+/* ===================================================
+   5. RESPONSIVE BREAKPOINTS
+   =================================================== */
+
+/* Tablet (around 4-5 cards per row) */
+@media (max-width: 1024px) {
+  .export-page-container {
+    padding: 100px 0 80px;
+  }
+
+  .export-content-wrapper {
+    padding: 0 28px;
+  }
+
+  .export-flags-grid {
+    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+    gap: 14px;
+  }
+
+  .export-flag-card {
+    padding: 20px 10px;
+  }
+
+  .export-flag-frame {
+    width: 56px;
+    height: 38px;
+  }
+
+  .export-flag-img {
+    width: 52px;
+    height: 35px;
+  }
+}
+
+/* Mobile (2-3 cards per row) */
+@media (max-width: 768px) {
+  .export-page-container {
+    padding: 88px 0 64px;
+  }
+
+  .export-content-wrapper {
+    padding: 0 16px;
+  }
+
+  .export-hero-header {
+    margin-bottom: 32px;
+  }
+
+  .export-main-title {
+    font-size: 1.85rem;
+  }
+
+  .export-controls-panel {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .export-search-box {
+    max-width: 100%;
+  }
+
+  .export-regions-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 6px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .export-regions-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .export-region-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .export-flags-grid {
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 10px;
+  }
+
+  .export-flag-card {
+    padding: 18px 8px;
+  }
+
+  .export-flag-frame {
+    width: 48px;
+    height: 32px;
+  }
+
+  .export-flag-img {
+    width: 46px;
+    height: 30px;
+  }
+}
+
+/* Extra small mobile (2 clean columns) */
+@media (max-width: 380px) {
+  .export-flags-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

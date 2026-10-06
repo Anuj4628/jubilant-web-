@@ -1,0 +1,389 @@
+/* ===================================================
+   JUBILANT STEELS — "INDUSTRIES" SECTION
+   Compact Directional 3D Tilt Cards
+   Continuous Horizontal Slider with Pause-on-Hover
+   =================================================== */
+
+.industries-section {
+  position: relative;
+  width: 100%;
+  padding: 76px 0 68px;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  overflow: hidden;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* Subtle Architectural Dot Matrix */
+.industries-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.industries-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* ===================================================
+   1. SECTION HEADER
+   =================================================== */
+
+.industries-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 38px;
+}
+
+.industries-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.eyebrow-red-dash {
+  color: var(--color-red, #D3122A);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.eyebrow-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-red, #D3122A);
+}
+
+.industries-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.85rem, 2.8vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #0F172A;
+  margin: 0 0 12px 0;
+}
+
+.industries-subtitle {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.92rem, 1.02vw, 1.02rem);
+  line-height: 1.58;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ===================================================
+   2. CONTINUOUS HORIZONTAL SLIDER VIEWPORT
+   =================================================== */
+
+.industries-slider-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 16px 0 24px;
+}
+
+/* Pause the continuous slider whenever hovering inside the viewport */
+.industries-slider-viewport:hover .industries-slider-track {
+  animation-play-state: paused;
+}
+
+/* Infinite Marquee Track moving Right to Left */
+.industries-slider-track {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+  animation: industriesSliderMarquee 50s linear infinite;
+}
+
+@keyframes industriesSliderMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ===================================================
+   3. COMPACT INDUSTRY TILT CARD
+   =================================================== */
+
+.industry-card-wrap {
+  flex: 0 0 clamp(250px, 19vw, 305px);
+  height: clamp(320px, 24vw, 365px);
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+}
+
+.industry-card-wrap.is-hovered {
+  z-index: 10;
+}
+
+.industry-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #070D18;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+  will-change: transform;
+}
+
+.industry-card-wrap.is-hovered .industry-card-inner {
+  transition: transform 0.08s ease-out,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+  border-color: rgba(211, 18, 42, 0.45);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18),
+              0 2px 8px rgba(211, 18, 42, 0.1);
+}
+
+/* Full Bleed Image Media Container */
+.industry-media-box {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.industry-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.04);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease;
+}
+
+.industry-card-wrap:hover .industry-image {
+  transform: scale(1.05);
+  filter: brightness(0.98) contrast(1.08);
+}
+
+.industry-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 13, 24, 0.15) 0%,
+    rgba(7, 13, 24, 0.4) 45%,
+    rgba(7, 13, 24, 0.94) 100%
+  );
+  pointer-events: none;
+}
+
+/* Top Technical Sector Tag */
+.industry-top-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.industry-index-number {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--color-red, #D3122A);
+  letter-spacing: 0.04em;
+}
+
+.industry-tag-divider {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.64rem;
+}
+
+.industry-tag-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #F1F5F9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Foreground Content */
+.industry-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 18px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.industry-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.industry-name {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.06rem, 1.35vw, 1.22rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.industry-arrow-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.industry-card-wrap:hover .industry-arrow-badge {
+  background: var(--color-red, #D3122A);
+  border-color: var(--color-red, #D3122A);
+  transform: translate(2px, -2px);
+}
+
+.industry-desc {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #CBD5E1;
+  margin: 0;
+}
+
+/* Subtle Red Accent Underline */
+.industry-accent-line {
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-red, #D3122A);
+  margin-top: 2px;
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(211, 18, 42, 0.6);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.industry-card-wrap:hover .industry-accent-line {
+  width: 100%;
+}
+
+/* ===================================================
+   4. RESPONSIVE DESIGN
+   =================================================== */
+
+@media (max-width: 1100px) {
+  .industries-section {
+    padding: 68px 0 60px;
+  }
+
+  .industries-header {
+    margin-bottom: 32px;
+  }
+
+  .industry-card-wrap {
+    flex: 0 0 clamp(230px, 24vw, 270px);
+    height: 330px;
+  }
+
+  .industries-slider-track {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .industries-section {
+    padding: 56px 0 48px;
+  }
+
+  .industries-container {
+    padding: 0 20px;
+  }
+
+  .industries-header {
+    margin-bottom: 24px;
+  }
+
+  .industries-title {
+    font-size: 1.65rem;
+  }
+
+  .industry-card-wrap {
+    flex: 0 0 clamp(220px, 72vw, 260px);
+    height: 300px;
+  }
+
+  .industry-card-content {
+    padding: 14px;
+  }
+
+  .industries-slider-track {
+    gap: 14px;
+    animation-duration: 38s;
+  }
+}
+
+/* Disable 3D tilt calculations on touch-only devices */
+@media (hover: none) {
+  .industry-card-wrap {
+    perspective: none;
+  }
+
+  .industry-card-inner {
+    transform: none !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .industries-slider-track {
+    animation-duration: 80s;
+  }
+}

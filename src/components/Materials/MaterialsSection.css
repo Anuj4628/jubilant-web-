@@ -1,0 +1,304 @@
+/* ===================================================
+   JUBILANT STEELS — "MATERIAL WE WORK WITH"
+   Continuous Horizontal Marquee (Right → Left)
+   Red Industrial Banner with Pure White Typography
+   =================================================== */
+
+.materials-section {
+  position: relative;
+  width: 100%;
+  padding: 84px 0 76px;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  overflow: hidden;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* Subtle Architectural Grid Pattern */
+.materials-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.materials-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* ===================================================
+   1. SECTION HEADER
+   =================================================== */
+
+.materials-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 46px;
+}
+
+.materials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.materials-eyebrow-dash {
+  color: var(--color-red, #D3122A);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.materials-eyebrow-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-red, #D3122A);
+}
+
+.materials-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #0F172A;
+  margin: 0 0 14px 0;
+}
+
+.materials-subtitle {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(0.95rem, 1.08vw, 1.06rem);
+  line-height: 1.62;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ===================================================
+   2. RED INDUSTRIAL BANNER SLIDER
+   =================================================== */
+
+.materials-slider-band {
+  position: relative;
+  width: 100%;
+  padding: 26px 0;
+  background-color: var(--color-red, #D3122A);
+  border-top: 1px solid #B80E23;
+  border-bottom: 1px solid #B80E23;
+  overflow: hidden;
+  box-shadow: 0 6px 26px rgba(211, 18, 42, 0.22),
+              0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Left & Right Edge Fade Masks in Brand Red */
+.materials-slider-fade-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, #D3122A 18%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.materials-slider-fade-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(270deg, #D3122A 18%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Marquee Track Container */
+.materials-marquee-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  user-select: none;
+}
+
+.materials-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: materialMarqueeRightToLeft 36s linear infinite;
+}
+
+/* Continuous Infinite Right-to-Left Keyframe */
+@keyframes materialMarqueeRightToLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ===================================================
+   3. MATERIAL ITEM (WHITE TEXT ON RED BANNER)
+   =================================================== */
+
+.material-item {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 6px 4px;
+  outline: none;
+  background: transparent;
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.material-name {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.2rem, 1.85vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  white-space: nowrap;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Clean White Accent Underline on Hover */
+.material-accent-line {
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #FFFFFF;
+  margin-top: 4px;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.material-item:hover .material-name,
+.material-item:focus-visible .material-name {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+.material-item:hover .material-accent-line,
+.material-item:focus-visible .material-accent-line {
+  width: 100%;
+}
+
+/* Subtle White Dot Divider */
+.material-separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 36px;
+  flex-shrink: 0;
+}
+
+.separator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  opacity: 0.75;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* ===================================================
+   4. RESPONSIVE DESIGN
+   =================================================== */
+
+@media (max-width: 1024px) {
+  .materials-section {
+    padding: 70px 0 62px;
+  }
+
+  .materials-header {
+    margin-bottom: 36px;
+  }
+
+  .material-name {
+    font-size: 1.25rem;
+  }
+
+  .material-separator {
+    padding: 0 24px;
+  }
+
+  .materials-slider-fade-left,
+  .materials-slider-fade-right {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .materials-section {
+    padding: 58px 0 50px;
+  }
+
+  .materials-container {
+    padding: 0 20px;
+  }
+
+  .materials-header {
+    margin-bottom: 28px;
+  }
+
+  .materials-title {
+    font-size: 1.75rem;
+  }
+
+  .material-name {
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+  }
+
+  .material-separator {
+    padding: 0 16px;
+  }
+
+  .separator-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .materials-slider-band {
+    padding: 18px 0;
+  }
+
+  .materials-slider-fade-left,
+  .materials-slider-fade-right {
+    width: 48px;
+  }
+
+  .materials-marquee-track {
+    animation-duration: 28s;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .materials-marquee-track {
+    animation-duration: 70s;
+  }
+}

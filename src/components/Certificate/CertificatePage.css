@@ -1,0 +1,217 @@
+/* ===================================================
+   CERTIFICATE PAGE STYLES - CLEAN INDUSTRIAL ASSURANCE
+   =================================================== */
+
+.certificate-page {
+  padding-top: 100px;
+  background-color: #F8FAFC;
+  min-height: 80vh;
+}
+
+.cert-container {
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.cert-hero-section {
+  padding: 40px 0 36px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.cert-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-red, #E23032);
+  margin-bottom: 12px;
+}
+
+.cert-accent-bar {
+  width: 20px;
+  height: 2.5px;
+  background-color: var(--color-red, #E23032);
+}
+
+.cert-headline {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.01em;
+}
+
+.cert-subhead {
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 780px;
+  margin: 0;
+}
+
+.cert-content-section {
+  padding: 48px 0 72px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+.cert-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  transition: all 0.22s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-2px);
+  border-color: #CBD5E1;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.cert-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cert-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(226, 48, 50, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-red, #E23032);
+}
+
+.cert-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0F172A;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.cert-card-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px 0;
+}
+
+.cert-authority {
+  font-size: 0.88rem;
+  color: #64748B;
+  margin-bottom: 12px;
+}
+
+.cert-desc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.cert-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 16px;
+}
+
+.cert-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.feature-check {
+  color: #16A34A;
+  flex-shrink: 0;
+}
+
+.cert-testing-bar {
+  background: #0F141C;
+  border-radius: 6px;
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  color: #FFFFFF;
+}
+
+.testing-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.testing-icon {
+  color: var(--color-red, #E23032);
+  flex-shrink: 0;
+}
+
+.testing-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #FFFFFF;
+}
+
+.testing-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #94A3B8;
+  margin: 0;
+  max-width: 680px;
+}
+
+@media (max-width: 900px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-testing-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .certificate-page {
+    padding-top: 80px;
+  }
+
+  .cert-container {
+    padding: 0 20px;
+  }
+
+  .cert-card {
+    padding: 22px;
+  }
+}

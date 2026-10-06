@@ -1,0 +1,563 @@
+/* ===================================================
+   JUBILANT STEELS — REDESIGNED PREMIUM INDUSTRIAL FOOTER
+   Clean • Authentic • Industrial • Professional
+   Color Palette:
+     Primary Dark: #0E2A3A / #081924
+     Accent: #D94A1F / #D3122A
+     Light/White: #FFFFFF / #F8FAFC
+     Slate/Muted: #94A3B8 / #CBD5E1
+   =================================================== */
+
+.site-footer {
+  position: relative;
+  background-color: #0E2A3A;
+  background-image: 
+    linear-gradient(180deg, #0E2A3A 0%, #091B26 60%, #06141D 100%),
+    radial-gradient(circle at 50% 0%, rgba(217, 74, 31, 0.05) 0%, transparent 60%);
+  color: #CBD5E1;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* ===================================================
+   1. PRE-FOOTER CALL-TO-ACTION STRIP
+   =================================================== */
+
+.footer-cta-strip {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px 0;
+  background-color: rgba(6, 20, 29, 0.4);
+}
+
+.footer-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.footer-cta-text {
+  max-width: 760px;
+}
+
+.footer-cta-badge {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  color: #D94A1F;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.footer-cta-heading {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.footer-cta-sub {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.footer-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.footer-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #D94A1F;
+  color: #FFFFFF;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(217, 74, 31, 0.3);
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.footer-btn-primary:hover {
+  background-color: #B93812;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(217, 74, 31, 0.4);
+}
+
+.footer-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.footer-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===================================================
+   2. MAIN 4-COLUMN FOOTER
+   =================================================== */
+
+.footer-main-area {
+  padding: 72px 0 64px;
+}
+
+.footer-columns-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1.3fr 1.5fr 1.8fr;
+  gap: 48px;
+}
+
+/* Column Headings */
+.footer-col-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 24px 0;
+}
+
+.col-heading-line {
+  width: 28px;
+  height: 2px;
+  background-color: #D94A1F;
+  border-radius: 1px;
+}
+
+/* COLUMN 1: Company */
+.footer-col-company {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-anchor {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.footer-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-logo-anchor:hover .footer-logo-badge {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.footer-brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-company-desc {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.68;
+  color: #94A3B8;
+  margin: 0 0 24px 0;
+}
+
+/* Trust / Cert Badges */
+.footer-trust-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.trust-badge-icon {
+  color: #D94A1F;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.trust-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust-badge-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+}
+
+.trust-badge-sub {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.74rem;
+  color: #64748B;
+}
+
+/* Direct Channels */
+.footer-direct-channels {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.direct-channel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  transition: all 0.2s ease;
+}
+
+.direct-channel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.direct-channel-btn.whatsapp:hover {
+  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.4);
+}
+
+.direct-channel-btn.email:hover {
+  color: #D94A1F;
+  border-color: rgba(217, 74, 31, 0.4);
+}
+
+/* COLUMN 2 & 3: Nav Lists */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-link {
+  display: inline-block;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.footer-nav-link:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.footer-nav-link:focus-visible {
+  outline: 2px solid #D94A1F;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* COLUMN 4: Contact & Operations */
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.contact-item-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background-color: rgba(217, 74, 31, 0.1);
+  border: 1px solid rgba(217, 74, 31, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D94A1F;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item-label {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 3px;
+}
+
+.contact-item-label-sub {
+  margin-top: 8px;
+}
+
+.contact-item-address {
+  font-style: normal;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #CBD5E1;
+}
+
+.contact-item-link {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.18s ease;
+}
+
+.contact-item-link:hover {
+  color: #D94A1F;
+}
+
+.contact-item-text {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.86rem;
+  color: #CBD5E1;
+  line-height: 1.4;
+}
+
+.contact-item-text-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  color: #94A3B8;
+  margin-top: 3px;
+}
+
+/* ===================================================
+   3. BOTTOM COPYRIGHT & LEGAL STRIP
+   =================================================== */
+
+.footer-bottom-bar {
+  background-color: #050E14;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 24px 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.82rem;
+  color: #64748B;
+  flex-wrap: wrap;
+}
+
+.copyright-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.copyright-tagline {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  color: #475569;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal-link {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.8rem;
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.footer-legal-link:hover {
+  color: #FFFFFF;
+}
+
+.legal-sep {
+  color: rgba(255, 255, 255, 0.12);
+  font-size: 0.75rem;
+}
+
+.footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 7px 14px;
+  border-radius: 4px;
+  color: #94A3B8;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.22s ease;
+}
+
+.footer-back-to-top:hover {
+  background-color: #D94A1F;
+  border-color: #D94A1F;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 74, 31, 0.3);
+}
+
+/* ===================================================
+   4. RESPONSIVE BREAKPOINTS
+   =================================================== */
+
+@media (max-width: 1200px) {
+  .footer-columns-grid {
+    grid-template-columns: 2fr 1fr 1.2fr 1.8fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-columns-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .footer-col-company {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    padding: 0 20px;
+  }
+
+  .footer-cta-strip {
+    padding: 36px 0;
+  }
+
+  .footer-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer-btn-primary,
+  .footer-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .footer-main-area {
+    padding: 50px 0 44px;
+  }
+
+  .footer-columns-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-col-company {
+    grid-column: span 1;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-back-to-top {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,244 @@
+/* ===================================================
+   HERO PROGRESS & NAVIGATION CONTROLS - REFINED INDUSTRIAL STYLE
+   =================================================== */
+
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  padding: 0 48px 44px;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 15, 22, 0.6) 0%,
+    rgba(10, 15, 22, 0.2) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.hero-bottom-container {
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  pointer-events: auto;
+}
+
+/* Progress Wrapper: 01 / 04 and thin progress lines */
+.hero-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 8px 18px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Slide Counter */
+.hero-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono, monospace);
+  user-select: none;
+}
+
+.counter-current-window {
+  display: inline-flex;
+  overflow: hidden;
+  height: 1.35em;
+  align-items: center;
+}
+
+.counter-current {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1;
+  will-change: transform, opacity;
+}
+
+.counter-divider {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 2px;
+}
+
+.counter-total {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Segmented Indicators */
+.hero-progress-segments {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-segment-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.2s ease;
+}
+
+.progress-segment-track {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+
+.progress-segment-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-red, #E23032);
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+.progress-segment-number {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.progress-segment-btn:hover .progress-segment-track {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.progress-segment-btn:hover .progress-segment-number {
+  color: #FFFFFF;
+}
+
+.progress-segment-btn.is-active .progress-segment-track {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.progress-segment-btn.is-active .progress-segment-number {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* Nav Controls (Arrows) */
+.hero-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 80px; /* Ample breathing room from floating action buttons on desktop */
+}
+
+.hero-nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-arrow-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-arrow-btn:hover {
+  background: var(--color-red, #E23032);
+  border-color: var(--color-red, #E23032);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.hero-arrow-btn:active {
+  transform: translateY(0);
+}
+
+/* ===================================================
+   RESPONSIVE CONTROLS (TABLET & MOBILE)
+   =================================================== */
+
+@media (max-width: 1024px) {
+  .hero-bottom-bar {
+    padding: 0 24px 28px;
+  }
+
+  .hero-bottom-container {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .hero-nav-controls {
+    margin-right: 0;
+  }
+
+  .hero-progress-segments {
+    display: none;
+  }
+
+  .hero-progress-wrapper {
+    padding: 7px 14px;
+    gap: 0;
+  }
+
+  .hero-arrow-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-bottom-bar {
+    padding: 0 16px 20px;
+  }
+
+  .hero-bottom-container {
+    gap: 8px;
+  }
+
+  .hero-progress-wrapper {
+    padding: 6px 12px;
+  }
+
+  .counter-current {
+    font-size: 1.1rem;
+  }
+
+  .hero-arrow-btn {
+    width: 36px;
+    height: 36px;
+  }
+}

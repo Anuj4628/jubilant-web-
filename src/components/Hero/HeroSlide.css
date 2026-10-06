@@ -1,0 +1,337 @@
+/* ===================================================
+   HERO SLIDE STYLES - NATURAL TYPOGRAPHY OVER STEEL PHOTOGRAPHY
+   Zero artificial cards, clear authentic industrial imagery.
+   =================================================== */
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Background Image Layer - Crisp, authentic, sharp industrial steel view */
+.hero-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  filter: brightness(0.96) contrast(1.03); /* Keeps steel texture and factory light authentic */
+}
+
+/* Localized left-side subtle overlay to guarantee 100% WCAG contrast for text
+   WITHOUT darkening the center and right side where the steel products are */
+.hero-slide-localized-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 15, 22, 0.78) 0%,
+    rgba(10, 15, 22, 0.52) 36%,
+    rgba(10, 15, 22, 0.12) 65%,
+    rgba(10, 15, 22, 0.0) 85%
+  );
+  pointer-events: none;
+}
+
+/* Content Wrap */
+.hero-slide-content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide-container {
+  width: 100%;
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  padding: 100px 48px 120px;
+}
+
+/* Natural Text Block - No card, no glass panel, pure typography */
+.hero-text-block {
+  max-width: 660px;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.hero-text-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Subtle Industrial Vertical Reveal Accent Line */
+.hero-reveal-line {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -22px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--color-red, #E23032) 0%,
+    rgba(226, 48, 50, 0.5) 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Headline Mask for Line-Level Vertical Reveal */
+.hero-headline-mask {
+  overflow: hidden;
+  padding: 2px 0 6px;
+}
+
+/* 1. Eyebrow */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.eyebrow-accent-bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--color-red, #E23032);
+  border-radius: 2px;
+}
+
+.eyebrow-text {
+  font-family: var(--font-mono, 'Space Grotesk', monospace);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F1F5F9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* 2. Main Headline */
+.hero-headline {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: clamp(2.4rem, 4.3vw, 3.65rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  margin: 0;
+}
+
+/* 3. Supporting Description */
+.hero-description {
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
+  line-height: 1.62;
+  letter-spacing: 0.005em;
+  color: #E2E8F0;
+  max-width: 600px;
+  margin-top: 18px;
+  font-weight: 400;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+/* 4. Dual CTA Group */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* Button overrides for Hero section */
+.hero-cta-group .btn {
+  border-radius: 4px;
+  padding: 13px 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-cta-group .btn-primary {
+  background-color: var(--color-red, #E23032);
+  border: 1px solid var(--color-red, #E23032);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(226, 48, 50, 0.3);
+}
+
+.hero-cta-group .btn-primary:hover {
+  background-color: #C72224;
+  border-color: #C72224;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(226, 48, 50, 0.4);
+}
+
+.hero-cta-group .btn-secondary {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-cta-group .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* 5. Technical Spec Tag */
+.hero-spec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 5px 12px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+
+.spec-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-red, #E23032);
+  border-radius: 50%;
+}
+
+.spec-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #CBD5E1;
+  text-transform: uppercase;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   =================================================== */
+
+@media (max-width: 1024px) {
+  .hero-slide-container {
+    padding: 85px 32px 105px;
+  }
+
+  .hero-text-block {
+    max-width: 580px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide-image {
+    object-position: center;
+  }
+
+  /* On mobile, localized mask covers smoothly to protect text readability */
+  .hero-slide-localized-mask {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 15, 22, 0.65) 0%,
+      rgba(10, 15, 22, 0.5) 45%,
+      rgba(10, 15, 22, 0.65) 100%
+    );
+  }
+
+  .hero-slide-container {
+    padding: 75px 20px 95px;
+  }
+
+  .hero-text-block {
+    max-width: 100%;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.65rem, 5.8vw, 2.25rem);
+    line-height: 1.18;
+    word-break: break-word;
+  }
+
+  .hero-description {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+
+  .hero-cta-group {
+    margin-top: 22px;
+    gap: 12px;
+  }
+
+  .hero-spec-tag {
+    margin-top: 18px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slide-container {
+    padding: 70px 16px 85px;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.4rem, 6.4vw, 1.8rem);
+    line-height: 1.2;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  .hero-spec-tag {
+    display: none;
+  }
+}
