@@ -1,0 +1,233 @@
+/* ===================================================
+   JUBILANT STEELS — CERTIFICATE HOVER DROPDOWN MENU
+   Clean, premium red industrial styling matching Materials panel
+   =================================================== */
+
+.cert-megamenu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, -5px, 0);
+  width: 580px;
+  max-width: min(580px, calc(100vw - 32px));
+  background-color: var(--color-red, #D3122A);
+  border: 1px solid #B80E23;
+  border-radius: 4px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32),
+              0 2px 8px rgba(0, 0, 0, 0.16);
+  margin-top: 8px;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Invisible Safe Hover Bridge */
+.cert-megamenu-panel::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
+/* Open State */
+.certificate-item:hover .cert-megamenu-panel,
+.cert-megamenu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+/* Header Bar */
+.cert-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 22px;
+  background-color: rgba(0, 0, 0, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cert-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cert-header-dash {
+  color: #FFA5B0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cert-header-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.cert-header-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FFE5E8;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-transform: uppercase;
+}
+
+/* Certificate Items List */
+.cert-items-list {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--color-red, #D3122A);
+}
+
+.cert-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.24);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateX(4px);
+}
+
+.cert-drop-icon-box {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  transition: background-color 0.18s ease;
+}
+
+.cert-dropdown-item:hover .cert-drop-icon-box {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.cert-drop-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cert-drop-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cert-drop-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.cert-drop-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #FFE5E8;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 2px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cert-drop-subtitle {
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cert-drop-action {
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.18s ease;
+}
+
+.cert-dropdown-item:hover .cert-drop-action {
+  color: #FFFFFF;
+  transform: scale(1.15);
+}
+
+/* Footer Bar */
+.cert-footer-bar {
+  padding: 11px 22px;
+  background-color: rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cert-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: gap 0.18s ease, color 0.18s ease;
+}
+
+.cert-footer-link:hover {
+  color: #FFE5E8;
+  gap: 12px;
+}
+
+.cert-footer-arrow {
+  color: #FFA5B0;
+  transition: transform 0.18s ease;
+}
+
+.cert-footer-link:hover .cert-footer-arrow {
+  transform: translateX(3px);
+}

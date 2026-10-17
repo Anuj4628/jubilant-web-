@@ -1,11 +1,12 @@
 /* ===================================================
    CERTIFICATE PAGE STYLES - CLEAN INDUSTRIAL ASSURANCE
+   With rich hover drop shadow, top glowing accent, and interactive PDF actions
    =================================================== */
 
 .certificate-page {
   padding-top: 100px;
   background-color: #F8FAFC;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 
 .cert-container {
@@ -15,7 +16,7 @@
 }
 
 .cert-hero-section {
-  padding: 40px 0 36px;
+  padding: 46px 0 40px;
   background: #FFFFFF;
   border-bottom: 1px solid #E2E8F0;
 }
@@ -29,13 +30,14 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--color-red, #E23032);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .cert-accent-bar {
-  width: 20px;
-  height: 2.5px;
+  width: 22px;
+  height: 3px;
   background-color: var(--color-red, #E23032);
+  border-radius: 2px;
 }
 
 .cert-headline {
@@ -50,36 +52,69 @@
 .cert-subhead {
   font-family: var(--font-primary, 'Inter', sans-serif);
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.62;
   color: #475569;
-  max-width: 780px;
+  max-width: 820px;
   margin: 0;
 }
 
 .cert-content-section {
-  padding: 48px 0 72px;
+  padding: 52px 0 76px;
 }
 
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  margin-bottom: 36px;
+  margin-bottom: 38px;
 }
 
+/* ===================================================
+   CERTIFICATE CARD & "PERFECT DROP" HOVER SYSTEM
+   =================================================== */
+
 .cert-card {
+  position: relative;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 6px;
-  padding: 32px;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
-  transition: all 0.22s ease;
+  padding: 32px 32px 28px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Top Glowing Accent Line that Drops In on Hover */
+.cert-card-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+/* THE "PERFECT DROP" HOVER STATE */
 .cert-card:hover {
-  transform: translateY(-2px);
-  border-color: #CBD5E1;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-6px);
+  border-color: rgba(226, 48, 50, 0.35);
+  box-shadow: 0 22px 42px -10px rgba(15, 23, 42, 0.15),
+              0 10px 22px -6px rgba(226, 48, 50, 0.12),
+              0 0 0 1px rgba(226, 48, 50, 0.18);
+}
+
+.cert-card:hover .cert-card-top-accent {
+  background: linear-gradient(
+    90deg,
+    var(--color-red, #E23032) 0%,
+    #FF5A5C 60%,
+    rgba(226, 48, 50, 0.4) 100%
+  );
 }
 
 .cert-card-header {
@@ -94,21 +129,31 @@
   height: 48px;
   border-radius: 6px;
   background: rgba(226, 48, 50, 0.08);
+  border: 1px solid rgba(226, 48, 50, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-red, #E23032);
+  transition: all 0.22s ease;
+}
+
+.cert-card:hover .cert-icon-wrap {
+  background: var(--color-red, #E23032);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(226, 48, 50, 0.3);
 }
 
 .cert-badge {
   font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #0F172A;
   background: #F1F5F9;
   border: 1px solid #E2E8F0;
   padding: 4px 10px;
   border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .cert-card-title {
@@ -117,17 +162,22 @@
   font-weight: 700;
   color: #0F172A;
   margin: 0 0 8px 0;
+  line-height: 1.35;
 }
 
 .cert-authority {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: #64748B;
   margin-bottom: 12px;
 }
 
+.cert-authority strong {
+  color: #334155;
+}
+
 .cert-desc {
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 0.94rem;
+  line-height: 1.58;
   color: #334155;
   margin-bottom: 20px;
 }
@@ -135,15 +185,16 @@
 .cert-features-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   border-top: 1px solid #F1F5F9;
-  padding-top: 16px;
+  padding-top: 18px;
+  margin-bottom: 24px;
 }
 
 .cert-feature-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   font-size: 0.88rem;
   color: #475569;
 }
@@ -153,6 +204,93 @@
   flex-shrink: 0;
 }
 
+/* ===================================================
+   CARD ACTIONS (VIEW & DOWNLOAD BUTTONS)
+   =================================================== */
+
+.cert-card-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #E2E8F0;
+  padding-top: 20px;
+}
+
+.cert-btn-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background-color: var(--color-red, #E23032);
+  border: 1px solid var(--color-red, #E23032);
+  color: #FFFFFF;
+  border-radius: 4px;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(226, 48, 50, 0.22);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-btn-view:hover {
+  background-color: #C72224;
+  border-color: #C72224;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(226, 48, 50, 0.35);
+  color: #FFFFFF;
+}
+
+.cert-btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  border-radius: 4px;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-btn-download:hover {
+  background-color: #F8FAFC;
+  border-color: var(--color-red, #E23032);
+  color: var(--color-red, #E23032);
+  transform: translateY(-2px);
+}
+
+.cert-btn-request {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  background-color: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #1E293B;
+  border-radius: 4px;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-btn-request:hover {
+  border-color: var(--color-red, #E23032);
+  color: var(--color-red, #E23032);
+  background-color: #FFFFFF;
+}
+
+/* ===================================================
+   BOTTOM TESTING ASSURANCE BAR
+   =================================================== */
+
 .cert-testing-bar {
   background: #0F141C;
   border-radius: 6px;
@@ -160,58 +298,87 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  color: #FFFFFF;
+  gap: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .testing-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 }
 
 .testing-icon {
   color: var(--color-red, #E23032);
   flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .testing-title {
   font-family: var(--font-display, 'Montserrat', sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  margin: 0 0 6px 0;
   color: #FFFFFF;
+  margin: 0 0 6px 0;
 }
 
 .testing-desc {
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: #94A3B8;
   margin: 0;
-  max-width: 680px;
+  max-width: 720px;
 }
 
-@media (max-width: 900px) {
+.testing-actions {
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   RESPONSIVE LAYOUT
+   =================================================== */
+
+@media (max-width: 1024px) {
   .cert-grid {
     grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .cert-container {
+    padding: 0 24px;
   }
 
   .cert-testing-bar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 24px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .certificate-page {
     padding-top: 80px;
   }
 
-  .cert-container {
-    padding: 0 20px;
+  .cert-card {
+    padding: 24px 20px 20px;
   }
 
-  .cert-card {
-    padding: 22px;
+  .cert-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cert-btn-view,
+  .cert-btn-download,
+  .cert-btn-request {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .testing-info {
+    flex-direction: column;
+    gap: 12px;
   }
 }

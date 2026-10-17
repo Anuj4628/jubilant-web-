@@ -2,9 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// 9 Storytelling Phases
+// Storytelling Phases
 import AboutIntro from './AboutIntro';
-import AboutLegacy from './AboutLegacy';
 import AboutQuality from './AboutQuality';
 import AboutPartners from './AboutPartners';
 import AboutLeadership from './AboutLeadership';
@@ -48,10 +47,7 @@ export default function AboutSection({ onNavigate }) {
       {/* 01: About Intro / Opening */}
       <AboutIntro />
 
-      {/* 02: The Steel Legacy of Jubilant Steels (Pinned Horizontal Journey) */}
-      <AboutLegacy />
-
-      {/* 03: Our Quality Promise (Precision Engineering Assembly) */}
+      {/* 02: Our Quality Promise (Precision Engineering Assembly) */}
       <AboutQuality />
 
       {/* 04: Trusted and Approved by Industry Leaders (Continuous Logo Marquee) */}

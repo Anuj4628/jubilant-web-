@@ -25,6 +25,7 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
   const headlineMaskRef = useRef(null);
   const headlineRef = useRef(null);
   const descRef = useRef(null);
+  const highlightsRef = useRef(null);
   const ctaGroupRef = useRef(null);
   const specTagRef = useRef(null);
   const timelineRef = useRef(null);
@@ -80,6 +81,9 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
       gsap.set(eyebrowRef.current, { y: minorOffset, opacity: 0 });
       gsap.set(headlineRef.current, { y: textOffset, opacity: 0 });
       gsap.set(descRef.current, { y: minorOffset, opacity: 0 });
+      if (highlightsRef.current) {
+        gsap.set(highlightsRef.current.children || [], { y: minorOffset, opacity: 0 });
+      }
       gsap.set(ctaGroupRef.current?.children || [], { y: minorOffset, opacity: 0 });
       if (specTagRef.current) {
         gsap.set(specTagRef.current, { y: minorOffset, opacity: 0 });
@@ -131,16 +135,28 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
         opacity: 1,
         duration: 0.48,
         ease: 'power2.out'
-      }, 0.38)
+      }, 0.38);
 
-      // 7. CTA Buttons Enter (0.48s)
-      .to(ctaGroupRef.current?.children || [], {
+      // 6b. Key Highlights (if present)
+      if (highlightsRef.current && highlightsRef.current.children.length > 0) {
+        tl.to(highlightsRef.current.children, {
+          y: 0,
+          opacity: 1,
+          stagger: 0.05,
+          duration: 0.38,
+          ease: 'power2.out'
+        }, 0.44);
+      }
+
+      // 7. CTA Buttons Enter
+      const ctaStart = slide.highlights && slide.highlights.length > 0 ? 0.52 : 0.48;
+      tl.to(ctaGroupRef.current?.children || [], {
         y: 0,
         opacity: 1,
         stagger: 0.08,
         duration: 0.42,
         ease: 'power2.out'
-      }, 0.48)
+      }, ctaStart)
 
       // 8. Spec Tag
       .to(specTagRef.current, {
@@ -148,7 +164,7 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
         opacity: 1,
         duration: 0.4,
         ease: 'power2.out'
-      }, 0.58);
+      }, ctaStart + 0.1);
 
       wasActiveRef.current = true;
 
@@ -232,6 +248,7 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
           src={slide.image}
           alt={slide.alt}
           className="hero-slide-image"
+          style={slide.imagePosition ? { objectPosition: slide.imagePosition } : undefined}
           loading={slide.id === 1 ? 'eager' : 'lazy'}
           fetchPriority={slide.id === 1 ? 'high' : 'auto'}
           decoding={slide.id === 1 ? 'sync' : 'async'}
@@ -265,6 +282,22 @@ function HeroSlide({ slide, isActive, direction = 1, onNavigate }) {
               <p ref={descRef} className="hero-description">
                 {slide.description}
               </p>
+
+              {/* Key Highlights */}
+              {slide.highlights && slide.highlights.length > 0 && (
+                <div ref={highlightsRef} className="hero-highlights-list" aria-label="Key Highlights">
+                  {slide.highlights.map((highlight, hIdx) => (
+                    <div key={hIdx} className="hero-highlight-item">
+                      <span className="hero-highlight-icon" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </span>
+                      <span className="hero-highlight-text">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* 4. Dual CTA Buttons */}
               <div ref={ctaGroupRef} className="hero-cta-group">
