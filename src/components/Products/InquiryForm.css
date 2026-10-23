@@ -351,7 +351,7 @@
 }
 
 .btn-rfq-again {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background: #1E293B;
   color: #FFFFFF;
@@ -369,6 +369,51 @@
 .btn-rfq-again:hover {
   background: #FF5500;
   border-color: #FF5500;
+}
+
+.inquiry-dispatch-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 1rem;
+}
+
+.btn-inquiry-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-inquiry-wa {
+  background: #25D366;
+  color: #FFFFFF;
+}
+
+.btn-inquiry-wa:hover {
+  background: #1EBE5D;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+.btn-inquiry-gmail {
+  background: #EA4335;
+  color: #FFFFFF;
+}
+
+.btn-inquiry-gmail:hover {
+  background: #D93025;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(234, 67, 53, 0.3);
 }
 
 @media (max-width: 768px) {

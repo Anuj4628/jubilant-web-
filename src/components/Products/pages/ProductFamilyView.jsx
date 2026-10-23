@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import GradeCard from '../GradeCard';
+import SEOHead from '../../SEO/SEOHead';
 import { getProductGroup, DIVISIONS } from '../../../data/productCatalogData';
+import { getProductFamilySeoData } from '../../../utils/seoHelper';
 import { FileText, Package, Layers, Search, X } from 'lucide-react';
 import './ProductFamilyView.css';
 
@@ -22,6 +24,10 @@ export default function ProductFamilyView({
   const group = useMemo(() => {
     return getProductGroup(divisionSlug, groupSlug);
   }, [divisionSlug, groupSlug]);
+
+  const seo = useMemo(() => {
+    return getProductFamilySeoData(group);
+  }, [group]);
 
   const division = useMemo(() => {
     return (group && DIVISIONS[group.divisionSlug]) || DIVISIONS[divisionSlug] || null;
@@ -107,6 +113,7 @@ export default function ProductFamilyView({
 
   return (
     <div className="premium-family-view">
+      {seo && <SEOHead {...seo} />}
       {/* 1. Large Industrial Hero Section (Exact Match to Reference Image 1) */}
       <section
         className="family-hero-section"
@@ -142,7 +149,7 @@ export default function ProductFamilyView({
             </div>
 
             {/* Main Category Title */}
-            <h1 className="family-hero-title">{group.name}</h1>
+            <h1 className="family-hero-title">{seo?.h1 || group.name}</h1>
 
             {/* Short Category Description */}
             <p className="family-hero-desc">

@@ -3,7 +3,9 @@ import ProductBreadcrumb from '../ProductBreadcrumb';
 import SpecsTable from '../SpecsTable';
 import InquiryForm from '../InquiryForm';
 import RelatedProducts from '../RelatedProducts';
+import SEOHead from '../../SEO/SEOHead';
 import { getProductCategory, getRelatedProducts, DIVISIONS } from '../../../data/productCatalogData';
+import { getProductSeoData } from '../../../utils/seoHelper';
 import './ProductDetailView.css';
 
 /**
@@ -30,6 +32,12 @@ export default function ProductDetailView({
     if (!product) return null;
     return DIVISIONS[product.divisionSlug] || null;
   }, [product]);
+
+  const seo = useMemo(() => {
+    if (!product) return null;
+    const grp = product.group || { name: product.groupName, slug: product.groupSlug, divisionSlug: product.divisionSlug };
+    return getProductSeoData(product, grp, division);
+  }, [product, division]);
 
   if (!product) {
     return (
@@ -61,16 +69,17 @@ export default function ProductDetailView({
   }
 
   const breadcrumbItems = [
-    { label: 'Products', path: '/products' },
-    {
-      label: division ? division.title : (product.divisionSlug === 'manufacturer' ? 'Manufacturer Division' : 'Supplier Division'),
-      path: `/products/${product.divisionSlug}`
-    },
+    { label: 'Home', url: '/' },
+    { label: 'Products', url: '/products' },
     {
       label: product.groupName,
-      path: `/products/${product.divisionSlug}/${product.groupSlug}`
+      url: `/products/${product.groupSlug}`
     },
-    { label: product.name, path: null }
+    {
+      label: product.materialName,
+      url: `/materials/${product.slug}`
+    },
+    { label: product.name, url: null }
   ];
 
   const scrollToRFQ = () => {
@@ -86,6 +95,7 @@ export default function ProductDetailView({
 
   return (
     <div className="bright-detail-view">
+      {seo && <SEOHead {...seo} />}
       <main className="detail-main-content">
         <div className="detail-container">
           <ProductBreadcrumb items={breadcrumbItems} onNavigate={onNavigate} />
@@ -98,7 +108,7 @@ export default function ProductDetailView({
               <div className="showcase-media-box">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={`${product.name} (Grade: ${product.grade}) ${seo?.intent?.actionVerb || 'manufactured'} in Mumbai by Jubilant Steels`}
                   className="showcase-img"
                   loading="eager"
                   decoding="async"
@@ -161,7 +171,7 @@ export default function ProductDetailView({
                 <span>{product.groupName}</span>
               </div>
 
-              <h1 className="product-title">{product.name}</h1>
+              <h1 className="product-title">{seo?.h1 || product.name}</h1>
 
               <div className="product-grade-badge">
                 <span className="grade-prefix">Governing Grade:</span>
@@ -236,6 +246,9 @@ export default function ProductDetailView({
 
           {/* Section: Technical Specs Table */}
           <section className="detail-specs-section">
+            <h2 className="apps-title" style={{ marginBottom: '16px' }}>
+              {product.name} Specifications & Governing Standards
+            </h2>
             <SpecsTable
               specs={product.specs}
               standards={product.standards || []}
@@ -246,7 +259,7 @@ export default function ProductDetailView({
           <section className="detail-applications-section">
             <div className="apps-header">
               <span className="apps-eyebrow">SECTOR COMPATIBILITY</span>
-              <h3 className="apps-title">Engineered For Critical Operating Environments</h3>
+              <h2 className="apps-title">Engineered For Critical Operating Environments</h2>
               <p className="apps-desc">
                 High mechanical integrity and chemical resistance across severe industrial services.
               </p>
@@ -292,6 +305,33 @@ export default function ProductDetailView({
                 </div>
                 <h4>Pharmaceutical & Dairy</h4>
                 <p>Ultra-clean sanitary fluid transfer, electro-polished piping, bio-processing vessels, and CIP lines.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Section: Industrial Supply & Mumbai Logistics Footprint */}
+          <section className="detail-mumbai-capability-section">
+            <div className="apps-header">
+              <span className="apps-eyebrow">INDUSTRIAL SUPPLY FOOTPRINT</span>
+              <h2 className="apps-title">
+                {product.materialName} {product.groupName} {seo?.intent?.phrase || 'in Mumbai'}
+              </h2>
+              <p className="apps-desc">
+                Jubilant Steels operates a certified supply, stockholding, and export network in Mumbai, delivering fully documented {product.materialName} {product.groupName.toLowerCase()} with 100% material traceability and urgent mill dispatch.
+              </p>
+            </div>
+            <div className="mumbai-capability-grid">
+              <div className="capability-box">
+                <strong>Mumbai Stockyard & Logistics</strong>
+                <p>Fast dispatch across Mumbai port terminals, JNPT, and domestic freight hubs with seaworthy export crating and barcoding.</p>
+              </div>
+              <div className="capability-box">
+                <strong>Complete MTC Documentation</strong>
+                <p>Every shipment is accompanied by authentic EN 10204 Type 3.1 & 3.2 inspection test certificates and 100% PMI metallurgical test reports.</p>
+              </div>
+              <div className="capability-box">
+                <strong>Custom Tolerances & Processing</strong>
+                <p>In-house precision cold sawing, beveling, ultrasonic examination, and hydrostatic pressure testing to customer engineering specs.</p>
               </div>
             </div>
           </section>

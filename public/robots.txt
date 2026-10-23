@@ -1,0 +1,18 @@
+# robots.txt for Jubilant Steels (https://jubilantsteel.com)
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*?*
+
+# Allow search bots to crawl images and styles
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+# XML Sitemap
+Sitemap: https://jubilantsteel.com/sitemap.xml

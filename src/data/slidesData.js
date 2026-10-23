@@ -4,12 +4,12 @@ export const heroSlides = [
     id: 1,
     slideNumber: "01",
     eyebrow: "PRECISION PIPING & CONNECTIONS",
-    headline: "Stainless Steel\nPipe Fittings and Flanges",
-    description: "Premium-quality stainless steel fittings and flanges engineered for reliable connections, durability, and demanding industrial applications.",
+    headline: "Stainless Steel\nPipe Fittings &\nFlanges",
+    description: "Premium-quality stainless steel fittings and flanges engineered for reliable leak-free connections, superior corrosion resistance, and demanding industrial applications.",
     highlights: [
+      "Precision Fittings & Flanges",
       "High Corrosion Resistance",
-      "Precision Engineering",
-      "Excellent Durability",
+      "Multiple Pressure Classes",
       "Industrial-Grade Quality"
     ],
     primaryCta: {
@@ -32,12 +32,12 @@ export const heroSlides = [
     id: 2,
     slideNumber: "02",
     eyebrow: "HEAVY-DUTY INDUSTRIAL PIPING",
-    headline: "Carbon Steel\nPipe Fittings and Flanges",
-    description: "Robust carbon steel fittings and flanges designed for strength, dependable performance, and demanding industrial piping systems.",
+    headline: "Carbon Steel\nPipe Fittings &\nFlanges",
+    description: "Robust carbon steel fittings and flanges designed for maximum structural strength, high-pressure tolerance, and heavy-duty industrial piping systems.",
     highlights: [
+      "Heavy-Duty Fittings & Flanges",
       "High Mechanical Strength",
       "Reliable Pipe Connections",
-      "Heavy-Duty Applications",
       "Precision Manufacturing"
     ],
     primaryCta: {
@@ -60,7 +60,7 @@ export const heroSlides = [
     id: 3,
     slideNumber: "03",
     eyebrow: "INDUSTRIAL TUBULAR SOLUTIONS",
-    headline: "Stainless Steel\nSeamless & Welded Pipes",
+    headline: "Stainless Steel\nSeamless &\nWelded Pipes",
     description: "High-quality stainless steel seamless and welded pipes engineered for dependable performance, excellent corrosion resistance, and diverse industrial applications.",
     highlights: [
       "Seamless and Welded Pipe Solutions",
@@ -83,25 +83,32 @@ export const heroSlides = [
     specTag: "ASTM A312, A358, A269, A213 // SCH 5S TO SCH XXS // 100% HYDRO & RADIOGRAPHY TESTED",
     alt: "Stainless steel seamless and welded pipes stacked on warehouse storage racks"
   },
-  // Slide 4 (Fourth): Large Diameter Alloy Steel Pipes
+  // Slide 4: Large Diameter Alloy Steel Pipes
   {
     id: 4,
     slideNumber: "04",
-    eyebrow: "EXPORTER OF",
-    headline: "LARGE DIAMETER ALLOY STEEL PIPES",
-    description: "Reliable steel piping solutions engineered for demanding industrial applications, with consistent quality, precision and dependable supply.",
+    eyebrow: "HIGH-STRENGTH ALLOY PIPING",
+    headline: "Alloy Steel\nLarge Diameter\nPipes",
+    description: "Heavy-duty large diameter alloy steel pipes engineered for high-pressure performance, extreme-temperature tolerance, and critical industrial applications.",
+    highlights: [
+      "Large Diameter Pipe Solutions",
+      "High Temperature & Pressure",
+      "Heavy-Wall Specifications",
+      "Industrial-Grade Performance"
+    ],
     primaryCta: {
-      label: "Get a Quote",
-      href: "/get-code",
+      label: "Explore Products",
+      href: "/products",
       variant: "primary"
     },
     secondaryCta: {
-      label: "Explore Products",
-      href: "/products",
+      label: "Request a Quote",
+      href: "/get-code",
       variant: "secondary"
     },
     image: "/images/hero-slide-1.jpg",
-    specTag: "SEAMLESS & WELDED PIPES // ASME / ASTM STANDARDS",
+    imagePosition: "center center",
+    specTag: "ASTM A335 P11, P22, P91 // OD UP TO 48\" // 100% HYDRO & RADIOGRAPHY TESTED",
     alt: "Large diameter alloy steel pipes stacked in industrial steel yard"
   }
 ];

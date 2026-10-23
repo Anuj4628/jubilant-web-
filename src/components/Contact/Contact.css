@@ -1363,6 +1363,273 @@
   background: #1EBE5D;
 }
 
+.btn-gmail-followup {
+  background: #EA4335;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-gmail-followup:hover {
+  background: #D93025;
+}
+
+.success-channels-box {
+  background: #0B0F17;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.success-channels-title {
+  font-family: var(--font-mono, 'Space Grotesk', monospace);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* ======================================================================
+   RFQ CHANNEL SELECTION MODAL — CLEAN BUSINESS DESIGN
+   ====================================================================== */
+.rfq-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: rfqModalFadeIn 0.2s ease-out;
+}
+
+@keyframes rfqModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.rfq-modal-dialog {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+  max-width: 580px;
+  width: 100%;
+  padding: 28px 28px 20px;
+  color: #0F172A;
+  animation: rfqModalScaleUp 0.2s ease-out;
+}
+
+@keyframes rfqModalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.rfq-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rfq-modal-close:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.rfq-modal-head {
+  text-align: left;
+  margin-bottom: 20px;
+  padding-right: 32px;
+}
+
+.rfq-modal-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.rfq-modal-subtitle {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #64748B;
+  margin: 0;
+}
+
+.rfq-modal-subtitle strong {
+  color: #0F172A;
+}
+
+.rfq-channels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.rfq-channel-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: inherit;
+  font-family: inherit;
+}
+
+.rfq-channel-card:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.channel-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.channel-icon-wa {
+  background: #DCFCE7;
+  color: #16A34A;
+  border: 1px solid #BBF7D0;
+}
+
+.channel-icon-gmail {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.channel-info {
+  flex-grow: 1;
+  margin-bottom: 14px;
+}
+
+.channel-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 4px 0;
+}
+
+.channel-desc {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #64748B;
+  margin: 0;
+}
+
+.channel-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  transition: all 0.15s ease;
+}
+
+.btn-wa-cta {
+  background: #16A34A;
+  color: #FFFFFF;
+}
+
+.rfq-channel-card:hover .btn-wa-cta {
+  background: #15803D;
+}
+
+.btn-gmail-cta {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.rfq-channel-card:hover .btn-gmail-cta {
+  background: #B91C1C;
+}
+
+.rfq-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.btn-modal-subtle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #64748B;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.btn-modal-subtle:hover {
+  color: #0F172A;
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  .rfq-channels-grid {
+    grid-template-columns: 1fr;
+  }
+  .rfq-modal-dialog {
+    padding: 22px 18px 16px;
+  }
+  .rfq-modal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 /* ======================================================================
    SECTION 4 — FREQUENTLY ASKED QUESTIONS (FAQ)
    ====================================================================== */

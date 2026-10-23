@@ -13,7 +13,6 @@ export default function Hero({ onNavigate }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [progressPercent, setProgressPercent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const totalSlides = heroSlides.length;
 
   const progressRef = useRef(0);
@@ -46,10 +45,8 @@ export default function Hero({ onNavigate }) {
     goToSlide((currentSlideIndex - 1 + totalSlides) % totalSlides, -1);
   }, [currentSlideIndex, totalSlides, goToSlide]);
 
-  // Autoplay loop with smooth progress tracking and pause on hover
+  // Autoplay loop with smooth progress tracking - continues uninterrupted on hover or mouse interaction
   useEffect(() => {
-    if (isPaused) return;
-
     const step = PROGRESS_INTERVAL_MS;
     const increment = (step / SLIDE_DURATION_MS) * 100;
 
@@ -69,7 +66,7 @@ export default function Hero({ onNavigate }) {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [totalSlides, isPaused, currentSlideIndex, goToSlide]);
+  }, [totalSlides, currentSlideIndex, goToSlide]);
 
   // Clean up lock timeout on unmount
   useEffect(() => {
@@ -97,8 +94,6 @@ export default function Hero({ onNavigate }) {
       id="home"
       className="hero-section"
       aria-label="Jubilant Steels Industrial Showcase"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* 4 Vertical Slides Viewport */}
       <div className="hero-slides-viewport">

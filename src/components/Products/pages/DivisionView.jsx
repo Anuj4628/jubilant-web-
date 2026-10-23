@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import FamilyCard from '../FamilyCard';
+import SEOHead from '../../SEO/SEOHead';
 import { getDivisionData, DIVISIONS } from '../../../data/productCatalogData';
+import { getDivisionSeoData } from '../../../utils/seoHelper';
 import mfrBgImage from '../../../assets/Product BG/precision pipes and fitting.png';
 import supBgImage from '../../../assets/Product BG/superior round and bars engineeres to be perfomed.png';
 import { Package, Layers, Search, X, FileText } from 'lucide-react';
@@ -14,6 +16,10 @@ import './DivisionView.css';
 export default function DivisionView({ divisionSlug, onNavigate }) {
   const divisionData = getDivisionData(divisionSlug);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const seo = useMemo(() => {
+    return getDivisionSeoData(divisionSlug);
+  }, [divisionSlug]);
 
   const heroCardRef = useRef(null);
   const gridContainerRef = useRef(null);
@@ -88,6 +94,7 @@ export default function DivisionView({ divisionSlug, onNavigate }) {
 
   return (
     <div className="premium-division-view">
+      {seo && <SEOHead {...seo} />}
       {/* 1. Large Industrial Hero Section (Reference Image 1 Style) */}
       <section
         className="division-hero-section"
@@ -119,7 +126,7 @@ export default function DivisionView({ divisionSlug, onNavigate }) {
             </div>
 
             {/* Main Heading */}
-            <h1 className="division-hero-title">{division.name}</h1>
+            <h1 className="division-hero-title">{seo?.h1 || division.name}</h1>
 
             {/* Description */}
             <p className="division-hero-desc">

@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import GradeCard from '../../Products/GradeCard';
+import SEOHead from '../../SEO/SEOHead';
 import { getMaterialBySlug, getProductsByMaterial, getMaterialCategories } from '../../../data/materialsData';
+import { getMaterialSeoData } from '../../../utils/seoHelper';
 import { ArrowLeft, Package, Layers, Search, X, ShieldCheck } from 'lucide-react';
 import './MaterialDetailView.css';
 
@@ -19,6 +21,10 @@ export default function MaterialDetailView({ materialSlug, onNavigate }) {
   const material = useMemo(() => {
     return getMaterialBySlug(materialSlug);
   }, [materialSlug]);
+
+  const seo = useMemo(() => {
+    return getMaterialSeoData(material);
+  }, [material]);
 
   // Dynamic collection of ALL products strictly belonging to this material
   const allMaterialProducts = useMemo(() => {
@@ -100,6 +106,7 @@ export default function MaterialDetailView({ materialSlug, onNavigate }) {
 
   return (
     <div className="material-detail-page">
+      {seo && <SEOHead {...seo} />}
       {/* 1. Header & Hero Area with Breadcrumb */}
       <section className="material-page-hero" ref={heroRef}>
         <div className="material-hero-container">
@@ -146,7 +153,7 @@ export default function MaterialDetailView({ materialSlug, onNavigate }) {
               </div>
 
               <h1 className="material-display-title">
-                {material.name} <span className="text-highlight-red">Products</span>
+                {seo?.h1 || `${material.name} Products Stocked & Supplied in Mumbai`}
               </h1>
 
               <p className="material-lead-desc">

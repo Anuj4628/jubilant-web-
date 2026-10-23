@@ -20,7 +20,7 @@ export const productShowcaseCards = [
     description: 'Precision fittings engineered for reliable connections across demanding piping systems.',
     image: buttweldImg,
     alt: 'Industrial forged buttweld pipe elbows, tees, and reducers',
-    route: '/products/manufacturer/butt-weld-fit'
+    route: '/products/manufacturer/butt-weld-fittings'
   },
   {
     id: '02',

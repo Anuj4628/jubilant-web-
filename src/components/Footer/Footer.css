@@ -440,6 +440,35 @@
   color: #475569;
 }
 
+.footer-agency-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.81rem;
+}
+
+.credit-lead {
+  color: #64748B;
+  font-weight: 400;
+}
+
+.credit-agency-link {
+  color: #CBD5E1;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: inline-block;
+}
+
+.credit-agency-link:hover {
+  color: #E23032;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .footer-legal-links {
   display: flex;
   align-items: center;

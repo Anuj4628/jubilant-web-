@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import ProductShowcaseSection from './components/Products/ProductShowcaseSection';
@@ -21,6 +21,8 @@ const MaterialsLandingView = lazy(() => import('./components/Materials/pages/Mat
 const MaterialDetailView = lazy(() => import('./components/Materials/pages/MaterialDetailView'));
 import ExportToSection from './components/ExportTo/ExportToPage';
 import Footer from './components/Footer/Footer';
+import SEOHead from './components/SEO/SEOHead';
+import { getStaticPageSeoData } from './utils/seoHelper';
 
 import { preloadRoute } from './utils/preloadRoute';
 
@@ -55,33 +57,33 @@ function parseRoute(pathname = window.location.pathname) {
 
   if (clean.startsWith('/materials')) {
     const raw = pathname.replace(/^\/materials\/?/i, '');
-    const parts = raw.split('/').filter(Boolean);
+    const parts = raw.split('/').filter(Boolean).map(p => p.toLowerCase());
 
     if (parts.length === 0) {
       return { page: 'materials', view: 'landing' };
     }
 
-    return { page: 'materials', view: 'material', materialSlug: parts[0].toLowerCase() };
+    return { page: 'materials', view: 'material', materialSlug: parts[0] };
   }
 
   if (clean.startsWith('/products')) {
     const raw = pathname.replace(/^\/products\/?/i, '');
-    const parts = raw.split('/').filter(Boolean);
+    const parts = raw.split('/').filter(Boolean).map(p => p.toLowerCase());
 
     if (parts.length === 0) {
       return { page: 'products', view: 'landing' };
     }
 
     if (parts.length === 1) {
-      const p0 = parts[0].toLowerCase();
+      const p0 = parts[0];
       if (p0 === 'manufacturer' || p0 === 'supplier') {
         return { page: 'products', view: 'division', divisionSlug: p0 };
       }
-      return { page: 'products', view: 'family', groupSlug: parts[0] };
+      return { page: 'products', view: 'family', groupSlug: p0 };
     }
 
     if (parts.length === 2) {
-      const p0 = parts[0].toLowerCase();
+      const p0 = parts[0];
       if (p0 === 'manufacturer' || p0 === 'supplier') {
         return { page: 'products', view: 'family', divisionSlug: p0, groupSlug: parts[1] };
       }
@@ -92,7 +94,7 @@ function parseRoute(pathname = window.location.pathname) {
       return {
         page: 'products',
         view: 'detail',
-        divisionSlug: parts[0].toLowerCase(),
+        divisionSlug: parts[0],
         groupSlug: parts[1],
         productSlug: parts[2]
       };
@@ -107,6 +109,19 @@ function parseRoute(pathname = window.location.pathname) {
  */
 export default function App() {
   const [route, setRoute] = useState(parseRoute);
+
+  // Static route SEO metadata
+  const staticSeo = useMemo(() => {
+    if (route.page === 'about') return getStaticPageSeoData('about');
+    if (route.page === 'certificate') return getStaticPageSeoData('certificate');
+    if (route.page === 'get-code') return getStaticPageSeoData('get-code');
+    if (route.page === 'contact') return getStaticPageSeoData('contact');
+    if (route.page === 'export') return getStaticPageSeoData('export');
+    if (route.page === 'materials' && (!route.view || route.view === 'landing')) return getStaticPageSeoData('materials');
+    if (route.page === 'products' && (!route.view || route.view === 'landing')) return getStaticPageSeoData('products');
+    if (route.page === 'home') return getStaticPageSeoData('home');
+    return null;
+  }, [route.page, route.view]);
 
   // Centralized page and section navigation handler
   const navigateTo = useCallback((target, param = null) => {
@@ -224,6 +239,7 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {staticSeo && <SEOHead {...staticSeo} />}
       {/* 1. Global Navbar with integrated page navigation */}
       <Navbar currentPage={route.page} onNavigate={navigateTo} />
 

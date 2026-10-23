@@ -15,7 +15,7 @@ import './GradeCard.css';
 function GradeCard({ category, groupSlug, divisionSlug, onSelect }) {
   if (!category) return null;
 
-  const targetUrl = `/products/${divisionSlug}/${groupSlug}/${category.slug}`;
+  const targetUrl = category.seoUrl || category.url || `/products/${groupSlug}/${category.slug}`;
 
   const handleClick = () => {
     if (onSelect) {
@@ -42,7 +42,7 @@ function GradeCard({ category, groupSlug, divisionSlug, onSelect }) {
         <div className="grade-media-container">
           <img
             src={category.image}
-            alt={category.name}
+            alt={`${category.name} (Grade: ${gradeTag}) ${isManufacturer ? 'manufactured' : 'stocked'} in Mumbai - Jubilant Steels`}
             className="grade-media-image"
             loading="lazy"
             decoding="async"

@@ -372,6 +372,19 @@ export default function Footer({ onNavigate }) {
               <span>&copy; {currentYear} Jubilant Steels. All rights reserved.</span>
               <span className="copyright-sep" aria-hidden="true">•</span>
               <span className="copyright-tagline">Global Steel Manufacturing • Export • Supply</span>
+              <span className="copyright-sep" aria-hidden="true">•</span>
+              <span className="footer-agency-credit">
+                <span className="credit-lead">Design and SEO by</span>{' '}
+                <a
+                  href="https://www.sunmargindia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="credit-agency-link"
+                  title="Sunmarg India — Official Website"
+                >
+                  Sunmarg India
+                </a>
+              </span>
             </div>
 
             <div className="footer-legal-links">

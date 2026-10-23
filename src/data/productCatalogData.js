@@ -3,6 +3,7 @@
 // Dedicated Single Source of Truth for Manufacturer & Supplier Divisions
 // ======================================================================
 
+import { generateProductSeoSlug } from "../utils/seoHelper";
 import img_manufacturer_butt_weld_fittings_hero from "../assets/Product Section/Manufacturer division/Butt weld fit/stainless steel.jpg";
 import img_manufacturer_butt_weld_fittings_alloy_steel_0 from "../assets/Product Section/Manufacturer division/Butt weld fit/alloy steel.jpg";
 import img_manufacturer_butt_weld_fittings_carbon_steel_1 from "../assets/Product Section/Manufacturer division/Butt weld fit/carbon.jpg";
@@ -2377,8 +2378,16 @@ for (let i = 0; i < PRODUCT_GROUPS.length; i++) {
   const divSlug = (group.divisionSlug || '').toLowerCase().trim();
   const grpSlug = (group.slug || '').toLowerCase().trim();
 
-  _groupsBySlug.set(grpSlug, group);
-  _groupsByDivisionAndSlug.set(`${divSlug}/${grpSlug}`, group);
+  // Support canonical slug and known aliases (e.g. butt-weld-fit, butt-weld-fitting)
+  const slugAliases = [grpSlug];
+  if (grpSlug === 'butt-weld-fittings') {
+    slugAliases.push('butt-weld-fit', 'butt-weld-fitting');
+  }
+
+  for (const s of slugAliases) {
+    _groupsBySlug.set(s, group);
+    _groupsByDivisionAndSlug.set(`${divSlug}/${s}`, group);
+  }
 
   if (_groupsByDivision[divSlug]) {
     _groupsByDivision[divSlug].push(group);
@@ -2388,17 +2397,31 @@ for (let i = 0; i < PRODUCT_GROUPS.length; i++) {
   for (let j = 0; j < categories.length; j++) {
     const cat = categories[j];
     const catSlug = (cat.slug || '').toLowerCase().trim();
+    const seoSlug = generateProductSeoSlug(grpSlug, cat, divSlug);
+
+    // Attach canonical SEO attributes to catalog items
+    cat.seoSlug = seoSlug;
+    cat.seoUrl = `/products/${grpSlug}/${seoSlug}`;
+    cat.url = cat.seoUrl;
+
     const item = {
       group,
       category: cat,
       ...cat,
+      seoSlug,
+      seoUrl: cat.seoUrl,
+      url: cat.seoUrl,
       groupName: group.name,
       groupSlug: group.slug,
       division: group.division,
       divisionSlug: group.divisionSlug
     };
-    _categoriesByFullKey.set(`${divSlug}/${grpSlug}/${catSlug}`, item);
-    _categoriesByGroupAndCat.set(`${grpSlug}/${catSlug}`, item);
+    for (const s of slugAliases) {
+      _categoriesByFullKey.set(`${divSlug}/${s}/${catSlug}`, item);
+      _categoriesByGroupAndCat.set(`${s}/${catSlug}`, item);
+      _categoriesByFullKey.set(`${divSlug}/${s}/${seoSlug}`, item);
+      _categoriesByGroupAndCat.set(`${s}/${seoSlug}`, item);
+    }
   }
 }
 
@@ -2428,15 +2451,76 @@ export function getProductGroup(arg1, arg2) {
 }
 
 export function getProductCategory(arg1, arg2, arg3) {
+  let cleanDiv = '';
+  let cleanGroup = '';
+  let cleanCat = '';
+
   if (!arg3) {
-    const cleanGroup = String(arg1 || '').toLowerCase().trim();
-    const cleanCat = String(arg2 || '').toLowerCase().trim();
-    return _categoriesByGroupAndCat.get(`${cleanGroup}/${cleanCat}`) || null;
+    cleanGroup = String(arg1 || '').toLowerCase().trim();
+    cleanCat = String(arg2 || '').toLowerCase().trim();
+  } else {
+    cleanDiv = String(arg1 || '').toLowerCase().trim();
+    cleanGroup = String(arg2 || '').toLowerCase().trim();
+    cleanCat = String(arg3 || '').toLowerCase().trim();
   }
-  const cleanDiv = String(arg1 || '').toLowerCase().trim();
-  const cleanGroup = String(arg2 || '').toLowerCase().trim();
-  const cleanCat = String(arg3 || '').toLowerCase().trim();
-  return _categoriesByFullKey.get(`${cleanDiv}/${cleanGroup}/${cleanCat}`) || _categoriesByGroupAndCat.get(`${cleanGroup}/${cleanCat}`) || null;
+
+  // 1. Direct Map Lookups (Standard & Canonical SEO Slugs)
+  if (cleanDiv) {
+    const fullMatch = _categoriesByFullKey.get(`${cleanDiv}/${cleanGroup}/${cleanCat}`);
+    if (fullMatch) return fullMatch;
+  }
+  const groupMatch = _categoriesByGroupAndCat.get(`${cleanGroup}/${cleanCat}`);
+  if (groupMatch) return groupMatch;
+
+  // 2. Intelligent Category Lookup within Group (Handles parameterized reference URLs)
+  const group = getProductGroup(cleanDiv, cleanGroup) || getProductGroup(cleanGroup);
+  if (group && group.categories && group.categories.length > 0) {
+    // 2a. Match on registered seoSlug or raw slug
+    for (const cat of group.categories) {
+      if (cat.seoSlug === cleanCat || cat.slug === cleanCat) {
+        return _categoriesByGroupAndCat.get(`${group.slug}/${cat.slug}`) || null;
+      }
+    }
+
+    // 2b. Intelligent matching on material keywords within SEO slug
+    const tokenMappings = [
+      ['stainless', 'stainless-steel'],
+      ['316ti', 'stainless-steel'],
+      ['316l', 'stainless-steel'],
+      ['304l', 'stainless-steel'],
+      ['310s', 'stainless-steel'],
+      ['carbon', 'carbon-steel'],
+      ['a105', 'carbon-steel'],
+      ['wpb', 'carbon-steel'],
+      ['super-duplex', 'super-duplex'],
+      ['2507', 'super-duplex'],
+      ['duplex', 'duplex'],
+      ['2205', 'duplex'],
+      ['alloy-steel', 'alloy-steel'],
+      ['p11', 'alloy-steel'],
+      ['p22', 'alloy-steel'],
+      ['p91', 'alloy-steel'],
+      ['inconel', 'nickel-alloys'],
+      ['hastelloy', 'nickel-alloys'],
+      ['monel', 'nickel-alloys'],
+      ['nickel', 'nickel-alloys'],
+      ['high-alloy', 'high-alloys'],
+      ['sanicro', 'high-alloys'],
+      ['titanium', 'titanium'],
+      ['exotic', 'exotic-alloys']
+    ];
+
+    for (const [token, catSlug] of tokenMappings) {
+      if (cleanCat.includes(token)) {
+        const found = _categoriesByGroupAndCat.get(`${group.slug}/${catSlug}`);
+        if (found) return found;
+      }
+    }
+
+    return _categoriesByGroupAndCat.get(`${group.slug}/${group.categories[0].slug}`) || null;
+  }
+
+  return null;
 }
 
 export function getRelatedProducts(arg1, arg2, limit = 4) {

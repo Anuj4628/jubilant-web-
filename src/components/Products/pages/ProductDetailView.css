@@ -451,3 +451,48 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+/* Industrial Footprint & Mumbai Capability Section */
+.detail-mumbai-capability-section {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 36px;
+  margin-bottom: 48px;
+}
+
+.mumbai-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 850px) {
+  .mumbai-capability-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.capability-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-left: 3px solid #D3122A;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.capability-box strong {
+  display: block;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.capability-box p {
+  font-size: 0.84rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
